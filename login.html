@@ -361,12 +361,13 @@
         </div>
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="showAuthTab('login')">Login</button>
-            <button class="tab-btn" onclick="showAuthTab('signup')">Sign Up</button>
+            <button class="tab active" onclick="showTab('login')">Login</button>
+            <button class="tab" onclick="showTab('signup')">Sign Up</button>
         </div>
 
         <!-- Login Form -->
-        <div id="login" class="form-content active">
+        <div id="login" class="form-content active"></div>
+        <div id="signup" class="form-content"> ... </div>
             <div id="loginError" class="error-message"></div>
             
           <form id="loginForm" onsubmit="return false;">
@@ -416,12 +417,15 @@
               <input type="email" id="signupEmail" ...>
               <input type="password" id="signupPassword" ...>
               <input type="password" id="signupConfirmPassword" ...>
-              <button type="button" class="btn btn-secondary"
+              <button type="button" class="btn"
                 onclick="signup(
                   document.getElementById('signupEmail').value,
                   document.getElementById('signupPassword').value
                 )">
                 Create Account
+        </button>
+
+                  <button class="tab" onclick="showTab('signup')">Sign Up</button>
           </button>
         </form>
         
@@ -449,11 +453,11 @@
     <script>
         // Switch between login and signup tabs
         function showAuthTab(tabName) {
-            const tabs = document.querySelectorAll('.tab-btn');
-            const contents = document.querySelectorAll('.form-content');
-            
-            tabs.forEach(tab => tab.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.form-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            document.getElementById(name).classList.add('active');
+    // activate the clicked tab (assumes onclick is on the button itself)
+            event.currentTarget.classList.add('active');
             
             event.target.classList.add('active');
             document.getElementById(tabName).classList.add('active');
