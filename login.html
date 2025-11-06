@@ -396,9 +396,8 @@
             </div>
 
             <div class="social-login">
-               <button class="social-btn" onclick="socialLogin('google')">
-                  <span>🔵</span> Google
-                </button>
+               <button class="social-btn" onclick="socialLogin('google')">Google</button>
+                  <span>🔵</span>
 
             <button class="social-btn" onclick="socialLogin('facebook')">
               <span>🟦</span> Facebook
@@ -581,14 +580,21 @@
                 window.location.href = 'index.html';
             }
         };
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
   import { 
     getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, 
     signOut, onAuthStateChanged, 
     GoogleAuthProvider, FacebookAuthProvider, signInWithPopup 
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
-  const firebaseConfig = { /* your values */ };
+  const firebaseConfig = {
+      apiKey: "AIzaSyCSPQyOldpYOlSOh2Fc1ucPit_AI-NxDwI",
+    authDomain: "web-app-28695.firebaseapp.com",
+    projectId: "web-app-28695",
+    storageBucket: "web-app-28695.firebasestorage.app",
+    messagingSenderId: "83256123767",
+    appId: "1:83256123767:web:13e04a8cd47b3e90ee0172"
+  };
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
@@ -600,9 +606,8 @@
       let provider;
       if (providerName === 'google') provider = new GoogleAuthProvider();
       if (providerName === 'facebook') provider = new FacebookAuthProvider();
-
       await signInWithPopup(auth, provider);
-      location.href = 'dashboard.html';
+      location.href = 'index.html';
     } catch (e) {
       alert(e.message);
     }
