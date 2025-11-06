@@ -288,5 +288,29 @@
     </div>
 
     <script src="script.js"></script>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+  const firebaseConfig = {
+      apiKey: "AIzaSyCSPQyOldpYOlSOh2Fc1ucPit_AI-NxDwI",
+    authDomain: "web-app-28695.firebaseapp.com",
+    projectId: "web-app-28695",
+    storageBucket: "web-app-28695.firebasestorage.app",
+    messagingSenderId: "83256123767",
+    appId: "1:83256123767:web:13e04a8cd47b3e90ee0172",
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  onAuthStateChanged(auth, (user) => {
+    if (!user) location.href = "index.html";
+  });
+
+  window.logout = async () => { await signOut(auth); location.href = "index.html"; };
+</script>
+
 </body>
 </html>
+
